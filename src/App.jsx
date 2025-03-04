@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ToastContainer position="bottom-center" autoClose={3000} theme="dark" />
       <Container
         style={{ marginTop: "20px", textAlign: "center", maxWidth: "600px" }}
       >

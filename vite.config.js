@@ -13,8 +13,8 @@ export default defineConfig({
       },
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg"],
       manifest: {
-        name: "Hodhob News",
-        short_name: "Hodhob",
+        name: "Hodhod News",
+        short_name: "Hodhod",
         start_url: "/",
         display: "standalone",
         background_color: "#ffffff",
