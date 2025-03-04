@@ -24,8 +24,8 @@ function NewsCard({ article }) {
   };
 
   // Copy article text for LinkedIn/Instagram
-  const copyArticle = (article) => {
-    const text = `📢 ${article.title}\n\n${article.summary}\n\nSource: ${article.source}\n\n🔗 Powered by: Project Hodhod`;
+  const copyArticle = () => {
+    const text = `📢 ${title}\n\n${summary}\n\nSource: ${source}\n\n🔗 Powered by: Project Hodhod`;
 
     navigator.clipboard
       .writeText(text)
