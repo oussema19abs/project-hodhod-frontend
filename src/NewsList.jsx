@@ -12,10 +12,12 @@ const API_URL = "https://project-hodhod-backend.onrender.com/news";
 function NewsList({ topic, fetchTrigger }) {
   const [articles, setArticles] = useState([]);
   const [page, setPage] = useState(1);
+  const [paginatedArticles, setPaginatedArticles] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const articlesPerPage = 5;
 
+  // Fetch articles when topic changes
   useEffect(() => {
     if (!topic) return;
     setLoading(true);
@@ -29,12 +31,14 @@ function NewsList({ topic, fetchTrigger }) {
       .catch(() => setLoading(false));
   }, [topic, fetchTrigger]);
 
-  // Pagination logic
+  // Update paginated articles when `page` or `articles` change
+  useEffect(() => {
+    const start = (page - 1) * articlesPerPage;
+    const end = start + articlesPerPage;
+    setPaginatedArticles(articles.slice(start, end));
+  }, [page, articles]);
+
   const totalPages = Math.ceil(articles.length / articlesPerPage);
-  const paginatedArticles = articles.slice(
-    (page - 1) * articlesPerPage,
-    page * articlesPerPage
-  );
 
   return (
     <Container style={{ marginTop: "20px" }}>
