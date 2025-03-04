@@ -13,9 +13,14 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   const [topic, setTopic] = useState("AI");
+  const [fetchNewsTrigger, setFetchNewsTrigger] = useState(false);
 
   // Predefined filters
   const filters = ["AI", "Cybersecurity", "Politics", "Business", "Technology"];
+
+  const handleFetchNews = () => {
+    setFetchNewsTrigger((prev) => !prev); // Toggle state to trigger fetching
+  };
 
   return (
     <>
@@ -59,12 +64,13 @@ function App() {
         <Button
           variant="contained"
           color="primary"
-          onClick={() => console.log("Fetching news...")}
+          onClick={handleFetchNews}
+          style={{ marginBottom: "20px" }}
         >
           Fetch News
         </Button>
 
-        <NewsList topic={topic} />
+        <NewsList topic={topic} fetchTrigger={fetchNewsTrigger} />
 
         <Footer />
       </Container>

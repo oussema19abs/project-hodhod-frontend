@@ -7,9 +7,9 @@ import {
 } from "@mui/material";
 import NewsCard from "./NewsCard";
 
-const API_URL = "https://project-hodhod-backend.onrender.com/news"; // Replace with actual backend
+const API_URL = "https://project-hodhod-backend.onrender.com/news";
 
-function NewsList({ topic }) {
+function NewsList({ topic, fetchTrigger }) {
   const [articles, setArticles] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -17,20 +17,20 @@ function NewsList({ topic }) {
   const articlesPerPage = 5;
 
   useEffect(() => {
+    if (!topic) return;
     setLoading(true);
     fetch(`${API_URL}/${topic}`)
       .then((res) => res.json())
       .then((data) => {
         setArticles(data.news || []);
+        setPage(1); // Reset to first page on new fetch
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, [topic]);
+  }, [topic, fetchTrigger]);
 
-  // Calculate total pages dynamically
+  // Pagination logic
   const totalPages = Math.ceil(articles.length / articlesPerPage);
-
-  // Get current page articles
   const paginatedArticles = articles.slice(
     (page - 1) * articlesPerPage,
     page * articlesPerPage
