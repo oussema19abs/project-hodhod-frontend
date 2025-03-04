@@ -29,7 +29,7 @@ function App() {
         style={{ marginTop: "20px", textAlign: "center", maxWidth: "600px" }}
       >
         <Typography variant="h4" gutterBottom>
-          📢 Project HodHod
+          📢 Project Hodhod
         </Typography>
 
         <Box
