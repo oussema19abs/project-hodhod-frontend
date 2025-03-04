@@ -23,7 +23,7 @@ function NewsList({ topic }) {
   }, [topic, page]);
 
   return (
-    <Container>
+    <Container style={{ marginTop: "20px"}}>
       {loading ? (
         <CircularProgress sx={{ display: "block", margin: "20px auto" }} />
       ) : articles.length > 0 ? (
